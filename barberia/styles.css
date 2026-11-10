@@ -1,0 +1,259 @@
+:root {
+  --verde: #1e3d2b;
+  --verde-oscuro: #142a1d;
+  --cuero: #5c3a21;
+  --bronce: #c9a227;
+  --papel: #f1eee3;
+  --tinta: #221d16;
+  --franja: #ddd2b8;
+  --banda-verde: #cfdccb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Work Sans', -apple-system, 'Segoe UI', sans-serif;
+  color: var(--tinta);
+  background: var(--papel);
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; }
+
+a:focus-visible, button:focus-visible { outline: 3px solid var(--bronce); outline-offset: 2px; }
+
+/* El scroll al hacer click en la navegacion es una respuesta directa a una accion
+   del usuario (no una animacion ambiental), por eso se mantiene aun con reduced-motion:
+   sin esto, el salto es instantaneo y se percibe como un cambio de pagina, no un scroll. */
+html { scroll-behavior: smooth; }
+
+section[id] { scroll-margin-top: 76px; }
+
+.barra-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--verde-oscuro);
+  padding: 0.75rem 1.25rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1040px;
+  margin: 0 auto;
+  color: var(--papel);
+}
+
+.marca { display: flex; align-items: center; gap: 0.6rem; }
+
+.insignia { color: var(--bronce); display: inline-flex; animation: girar 18s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .insignia { animation: none; }
+}
+
+@keyframes girar { to { transform: rotate(360deg); } }
+
+.nombre-marca { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem; color: var(--papel); }
+
+.nav-links { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: 0.88rem; }
+
+.nav-links a { color: var(--papel); opacity: 0.8; text-decoration: none; }
+
+.nav-links a:hover, .nav-links a:focus-visible { opacity: 1; text-decoration: underline; }
+
+.hero {
+  background: linear-gradient(170deg, var(--verde) 0%, var(--verde-oscuro) 100%);
+  color: var(--papel);
+  padding: 4rem 1.25rem 4.5rem;
+}
+
+.hero-contenido { max-width: 640px; margin: 0 auto; text-align: left; }
+
+.antetitulo { color: var(--bronce); margin-bottom: 0.75rem; font-size: 1rem; }
+
+.hero-contenido h1 { font-size: 2.6rem; line-height: 1.15; margin-bottom: 1.25rem; }
+
+.hero-texto { opacity: 0.88; max-width: 480px; margin-bottom: 2rem; font-size: 1.05rem; }
+
+.boton {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.boton-lleno { background: var(--bronce); color: var(--verde-oscuro); }
+
+.boton-fantasma { border: 1.5px solid var(--papel); color: var(--papel); padding: 0.55rem 1.1rem; font-size: 0.88rem; }
+
+main { max-width: 1040px; margin: 0 auto; }
+
+.seccion { padding: 3.75rem 1.25rem; border-top: 1px solid rgba(201, 162, 39, 0.2); }
+
+.seccion h2 { font-size: 1.7rem; margin-bottom: 1.75rem; color: var(--verde-oscuro); text-align: center; }
+
+.franja { background: var(--franja); }
+
+.banda-verde { background: var(--banda-verde); }
+
+/* Historia: texto + tarjeta divisa, para no dejar un parrafo largo solo */
+.historia-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.historia-grid h2 { text-align: left; }
+
+.texto-historia { font-size: 1.05rem; max-width: 480px; }
+
+.tarjeta-divisa {
+  background: var(--verde-oscuro);
+  color: var(--papel);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.tarjeta-divisa svg { color: var(--bronce); margin-bottom: 1rem; }
+
+.tarjeta-divisa p { font-family: 'Fraunces', serif; font-size: 1.1rem; }
+
+/* Servicios como tarjetas, no una lista pegada a un lado */
+.tarjetas-servicios {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.tarjetas-servicios li {
+  background: var(--papel);
+  border: 1px solid rgba(34, 29, 22, 0.14);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 1rem;
+}
+
+.tarjetas-servicios .precio { font-family: 'Fraunces', serif; color: var(--cuero); white-space: nowrap; font-weight: 600; }
+
+.nota { margin-top: 1.25rem; font-size: 0.85rem; opacity: 0.65; text-align: center; }
+
+.lista-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; max-width: 680px; margin: 0 auto; }
+
+.lista-pills span {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border: 1.5px solid var(--cuero);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  color: var(--cuero);
+}
+
+.equipo { display: flex; gap: 1.75rem; flex-wrap: wrap; justify-content: center; }
+
+.persona { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; width: 130px; text-align: center; }
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--verde-oscuro);
+  color: var(--bronce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.persona .rol { font-size: 0.82rem; opacity: 0.7; }
+
+.galeria { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+
+.pieza {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--cuero);
+  text-align: center;
+  width: 160px;
+  font-size: 0.9rem;
+  background: var(--papel);
+  border: 1px solid rgba(34, 29, 22, 0.12);
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+}
+
+.opiniones { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+
+.opinion {
+  background: #fff;
+  border: 1px solid rgba(34, 29, 22, 0.12);
+  border-radius: 8px;
+  padding: 1.25rem;
+  max-width: 280px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(34, 29, 22, 0.06);
+}
+
+.opinion .autor { display: block; margin-top: 0.75rem; font-weight: 600; font-size: 0.85rem; color: var(--cuero); }
+
+.dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 760px; margin: 0 auto; }
+
+.tarjeta-info {
+  background: var(--franja);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.tarjeta-info h3 { font-size: 1.1rem; margin-bottom: 0.9rem; color: var(--verde-oscuro); }
+
+.tabla-horarios { width: 100%; border-collapse: collapse; }
+
+.tabla-horarios td { padding: 0.5rem 0; border-bottom: 1px solid rgba(34, 29, 22, 0.15); }
+
+.tabla-horarios td:last-child { text-align: right; font-weight: 500; }
+
+.enlace-mapa { display: inline-block; margin-top: 0.75rem; color: var(--cuero); font-weight: 600; text-decoration: underline; }
+
+.cta-final {
+  text-align: center;
+  padding: 3.5rem 1.25rem;
+  background: linear-gradient(170deg, var(--verde) 0%, var(--verde-oscuro) 100%);
+  color: var(--papel);
+}
+
+.cta-final h2 { color: var(--papel); margin-bottom: 1.5rem; }
+
+footer { text-align: center; padding: 1.75rem; color: #6b6354; font-size: 0.85rem; background: var(--papel); }
+
+@media (max-width: 720px) {
+  .historia-grid { grid-template-columns: 1fr; }
+  .historia-grid h2 { text-align: center; }
+  .texto-historia { max-width: 100%; text-align: center; margin: 0 auto; }
+}
+
+@media (max-width: 640px) {
+  .hero-contenido h1 { font-size: 2rem; }
+  .dos-columnas { grid-template-columns: 1fr; }
+  .tarjetas-servicios { grid-template-columns: 1fr; }
+}
